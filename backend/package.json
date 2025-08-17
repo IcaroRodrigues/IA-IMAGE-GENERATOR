@@ -5,11 +5,17 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "dev": "nodemon --watch src --ext ts --exec ts-node ./src/index.ts",
+    "dev": "NODE_ENV=development nodemon --watch src --ext ts --exec ts-node ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.ts,.tsx --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:generate": "npm run typeorm -- migration:generate -d ./src/data-source.ts",
+    "migration:create": "npm run typeorm -- migration:create",
+    "migration:run": "npm run typeorm -- migration:run -d ./src/data-source.ts",
+    "migration:revert": "npm run typeorm -- migration:revert -d ./src/data-source.ts",
+    "migration:show": "npm run typeorm -- migration:show -d ./src/data-source.ts"
   },
   "author": "",
   "license": "ISC",

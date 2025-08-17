@@ -28,6 +28,12 @@ export class UserRepository {
     });
   }
 
+  async findByUsername(username: string): Promise<User | null> {
+    return await this.repository.findOne({
+      where: { username },
+    });
+  }
+
   async update(id: string, data: Partial<User>): Promise<User | null> {
     await this.repository.update(id, data);
     return await this.findById(id);
