@@ -9,6 +9,7 @@ function Navbar() {
       }}
     >
       <h1>Navbar</h1>
+      <p>teste</p>
     </div>
   );
 }

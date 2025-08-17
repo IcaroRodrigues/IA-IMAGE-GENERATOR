@@ -17,7 +17,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         {/* Layout com Navbar */}
         <Route path="/" element={<App />}>
-          {/* Tudo como rota filha -> aparece dentro do <Outlet /> */}
+          {/* rotas filhas */}
           <Route index element={<ImageGenerator />} />
           <Route path="feed" element={<Feed />} />
           <Route path="history" element={<History />} />
