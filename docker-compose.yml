@@ -16,6 +16,7 @@ services:
     # Mount the backend source code into the container for live-reloading on changes
     volumes:
       - ./backend:/app
+      - /app/node_modules
     # Pass environment variables to the application
     # This is how you'll pass database credentials securely
     environment:
