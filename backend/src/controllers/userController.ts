@@ -1,33 +1,63 @@
-import type { Request, Response } from 'express'; // apenas tipos
-
+import type { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
-import { User } from '../@types/user';
+import { UserRepository } from '../repositories/UserRepository';
 
-const users: User[] = [];
+const userRepository = new UserRepository();
 
 export const createUser = async (req: Request, res: Response) => {
-  const { email, username, password } = req.body;
+  try {
+    const { email, username, password } = req.body;
 
-  if (!email) {
-    return res.status(400).json({ error: 'Email é obrigatório' });
+    if (!email) {
+      return res.status(400).json({ error: 'Email é obrigatório' });
+    }
+
+    if (!username) {
+      return res.status(400).json({ error: 'Username é obrigatório' });
+    }
+
+    if (!password) {
+      return res.status(400).json({ error: 'Senha é obrigatório' });
+    }
+
+    const existingUser = await userRepository.findByEmail(email);
+
+    if (existingUser) {
+      return res.status(400).json({ error: 'Email já cadastrado' });
+    }
+
+    const hashedPassword = await bcrypt.hash(String(password), 10);
+
+    const user = await userRepository.create({
+      email,
+      username,
+      password: hashedPassword,
+    });
+
+    const { password: _, ...userWithoutPassword } = user;
+    res.status(201).json(userWithoutPassword);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao criar usuário' });
   }
-
-  if (!username) {
-    return res.status(400).json({ error: 'Username é obrigatório' });
-  }
-
-  if (!password) {
-    return res.status(400).json({ error: 'Password é obrigatório' });
-  }
-
-  const hashedPassword = await bcrypt.hash(String(password), 10);
-  const user = { id: users.length + 1, email, password: hashedPassword, username };
-
-  users.push(user);
-
-  res.status(201).json(user);
 };
 
-export const listUsers = (req: Request, res: Response) => {
-  res.json(users);
+export const getUsers = async (req: Request, res: Response) => {
+  try {
+    const users = await userRepository.findAll();
+    res.json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar usuários' });
+  }
+};
+
+export const listUsers = async (req: Request, res: Response) => {
+  try {
+    const users = await userRepository.findAll();
+    res.json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao listar usuários' });
+  }
 };
