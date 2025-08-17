@@ -21,6 +21,11 @@ export const createUser = async (req: Request, res: Response) => {
     }
 
     const existingUser = await userRepository.findByEmail(email);
+    const existingUsername = await userRepository.findByUsername(username);
+
+    if (existingUsername) {
+      return res.status(400).json({ error: 'Username já cadastrado' });
+    }
 
     if (existingUser) {
       return res.status(400).json({ error: 'Email já cadastrado' });
@@ -42,22 +47,60 @@ export const createUser = async (req: Request, res: Response) => {
   }
 };
 
-export const getUsers = async (req: Request, res: Response) => {
-  try {
-    const users = await userRepository.findAll();
-    res.json(users);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erro ao buscar usuários' });
-  }
-};
-
-export const listUsers = async (req: Request, res: Response) => {
+export const readUsers = async (req: Request, res: Response) => {
   try {
     const users = await userRepository.findAll();
     res.json(users);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Erro ao listar usuários' });
+  }
+};
+
+export const updateUser = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const { email, username } = req.body;
+
+    const user = await userRepository.findById(id);
+    const userByEmail = await userRepository.findByEmail(email);
+    const userByUsername = await userRepository.findByUsername(username);
+
+    if (!user) {
+      return res.status(404).json({ error: 'Usuário nao encontrado' });
+    }
+
+    if (userByEmail && userByEmail.id !== id) {
+      return res.status(400).json({ error: 'Email ja cadastrado' });
+    }
+
+    if (userByUsername && userByUsername.id !== id) {
+      return res.status(400).json({ error: 'Username ja cadastrado' });
+    }
+
+    const updatedUser = await userRepository.update(id, {
+      email,
+      username,
+    });
+
+    res.json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao atualizar usuário' });
+  }
+};
+
+export const deleteUser = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const deleted = await userRepository.delete(id);
+
+    if (deleted) {
+      return res.status(200).json({ message: 'Usuário deletado com sucesso' });
+    }
+
+    res.status(404).json({ error: 'Usuário nao encontrado' });
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao deletar usuário' });
   }
 };
