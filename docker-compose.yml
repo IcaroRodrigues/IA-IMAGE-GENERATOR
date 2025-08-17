@@ -1,26 +1,66 @@
+# Use a modern version of the Docker Compose file format
 version: '3.8'
 
 services:
-    mysql:
-      image: mysql:8.0
-      container_name: mysql_db
-      restart: always
-      command: --default-authentication-plugin=mysql_native_password
-      environment:
-          MYSQL_ROOT_PASSWORD: ROOT_MYSQL_P@ssw0rd
-          MYSQL_DATABASE: image_gen_database
-          MYSQL_USER: mysql_user
-          MYSQL_PASSWORD: USER_MYSQL_P@ssw0rd
-      ports:
-        - "3306:3306"
-      volumes:
-        - db_data:/var/lib/mysql
-      networks:
-        - app-network
+  # Define the Backend service
+  backend:
+    # Build the image from the Dockerfile in the './backend' directory
+    build: ./backend
+    # Name the container for easy identification
+    container_name: backend_app
+    # Restart the container if it stops
+    restart: always
+    # Map the port 3000 on your local machine to port 3000 in the container
+    ports:
+      - '3000:3000'
+    # Mount the backend source code into the container for live-reloading on changes
+    volumes:
+      - ./backend:/app
+    # Pass environment variables to the application
+    # This is how you'll pass database credentials securely
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=mysql_user
+      - DB_PASSWORD=USER_MYSQL_P@ssw0rd
+      - DB_NAME=image_gen_database
+    # Connect this service to the same network as the database
+    networks:
+      - app-network
+    depends_on:
+      - mysql
 
+  # Define the MySQL service
+  mysql:
+    # Use the official MySQl 8.0 image from Docker Hub
+    image: mysql:8.0
+    # Set a friendly name for the container
+    container_name: mysql_db
+    # Always restart the container if it stops
+    restart: always
+    # Add a command to set the default authentication plugin for better client compatibility
+    command: --default-authentication-plugin=mysql_native_password
+    # Set environment variables for MySQL configuration
+    environment:
+      MYSQL_ROOT_PASSWORD: ROOT_MYSQL_P@ssw0rd
+      MYSQL_DATABASE: image_gen_database
+      MYSQL_USER: mysql_user
+      MYSQL_PASSWORD: USER_MYSQL_P@ssw0rd
+    # Map port 3306 on the host to port 3306 in the container
+    ports:
+      - '3306:3306'
+    # Mount a named volume to persist database data
+    volumes:
+      - db_data:/var/lib/mysql
+    # Attach the container to a custom network for future services
+    networks:
+      - app-network
+
+# Define the networks to be created
 networks:
-    app-network:
-        driver: bridge
+  app-network:
+    driver: bridge
 
+# Define the volumes to be created
 volumes:
-    db_data:
+  # This named volume will store the MySQL data
+  db_data:

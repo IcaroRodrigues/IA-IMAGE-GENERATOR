@@ -1,0 +1,12 @@
+# Ignore the node_modules directory to prevent copying it into the container.
+# This avoids issues with platform-specific binaries and symlinks.
+node_modules
+
+# Ignore build artifacts if you have a build step.
+dist
+
+# Ignore npm debug logs.
+npm-debug.log
+
+# Ignore environment files - these should be passed in via Docker Compose.
+.env
