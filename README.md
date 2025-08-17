@@ -72,6 +72,12 @@ Lorem Ipsum Dolor Sit Amet
 
 Lorem Ipsum Dolor Sit Amet
 
+## Docker
+
+Essa sessão descreve os principais comandos de Docker para este projeto. Para demais dúvidas que esta sessão não cobre, abrir uma issue.
+
+
+
 ## Acknowledgements
 
 <!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For exmpale -->
@@ -81,7 +87,7 @@ Lorem Ipsum Dolor Sit Amet
 ## Authors
 
 <!-- - Website [your-website.com](https://{your-web-site-link}) -->
-- GitHub [@IcaroRodrigues](https://{github.com/IcaroRodrigues})
-- GitHub [@Bacana](https://{github.com/your-usermame})
-- GitHub [@Br0ken](https://{github.com/CR1SS19})
-- GitHub [@00lm](https://{github.com/00lucasm})
+- GitHub [@IcaroRodrigues](https://github.com/IcaroRodrigues)
+- GitHub [@Bacana](https://github.com/your-usermame)
+- GitHub [@Br0ken](https://github.com/CR1SS19)
+- GitHub [@00lm](https://github.com/00lucasm)
