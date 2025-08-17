@@ -1,10 +1,23 @@
 import Router from 'express';
+import bcrypt from 'bcrypt';
 
 const router = Router();
 
-router.post('/', (req, res) => {
+async function hashPassword(password: string): Promise<string> {
+  const hash = await bcrypt.hash(password.toString(), 10);
+  return hash;
+}
+
+router.post('/', async (req, res) => {
   const { email, password } = req.body;
-  res.json({ email, password });
+
+  try {
+    const passwordHashed = await hashPassword(password);
+
+    res.json({ email, password: passwordHashed });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 export default router;
