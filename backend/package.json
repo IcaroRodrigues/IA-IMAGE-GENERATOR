@@ -12,8 +12,8 @@
     "lint:fix": "eslint . --ext .js,.ts,.tsx --fix",
     "format": "prettier --write .",
     "typeorm": "typeorm-ts-node-commonjs",
-    "migration:generate": "npm run typeorm -- migration:generate -d ./src/data-source.ts",
-    "migration:create": "npm run typeorm -- migration:create",
+    "migration:generate": "npm run typeorm -- migration:generate ./src/migrations/$npm_config_name -d ./src/data-source.ts",
+    "migration:create": "npm run typeorm -- migration:create ./src/migrations/$npm_config_name",
     "migration:run": "npm run typeorm -- migration:run -d ./src/data-source.ts",
     "migration:revert": "npm run typeorm -- migration:revert -d ./src/data-source.ts",
     "migration:show": "npm run typeorm -- migration:show -d ./src/data-source.ts"
@@ -21,10 +21,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/multer": "^2.0.0",
     "@types/uuid": "^10.0.0",
     "bcrypt": "^6.0.0",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "multer": "^2.0.2",
     "mysql2": "^3.14.3",
     "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.25",

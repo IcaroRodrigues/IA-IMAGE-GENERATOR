@@ -4,7 +4,11 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
+  ManyToMany,
 } from 'typeorm';
+
+import { Image } from './Image';
 
 @Entity('users')
 export class User {
@@ -25,4 +29,14 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  // Relacionamentos //
+
+  // Imagens criadas pelo usuário
+  @OneToMany(() => Image, (image) => image.creator)
+  images: Image[];
+
+  // Imagens que o usuário gostou
+  @ManyToMany(() => Image, (image) => image.likedBy)
+  likedImages: Image[];
 }

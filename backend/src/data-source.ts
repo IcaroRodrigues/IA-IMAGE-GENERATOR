@@ -8,9 +8,9 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USER || 'mysql_user',
   password: process.env.DB_PASSWORD || 'USER_MYSQL_P@ssw0rd',
   database: process.env.DB_NAME || 'image_gen_database',
-  synchronize: process.env.NODE_ENV === 'development',
+  synchronize: false,
   logging: process.env.NODE_ENV === 'development',
-  entities: ['src/entities/*.ts'],
+  entities: ['src/entities/**/*.ts'],
   migrations: ['src/migrations/*.ts'],
   subscribers: [],
 });
