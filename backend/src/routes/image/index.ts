@@ -1,5 +1,12 @@
 import { Router } from 'express';
-import { create, deleteImage, read, readByUser } from '../../controllers/imageController';
+import {
+  create,
+  deleteImage,
+  read,
+  userImageHistory,
+  userLikedImages,
+} from '../../controllers/imageController';
+
 import upload from '../../middleware/upload';
 
 const router = Router();
@@ -11,7 +18,10 @@ router.post('/image', upload.single('image'), create);
 router.get('/images', read);
 
 //Rota de listagem de imagens do usuário
-router.get('/imagesByUser/:id', readByUser);
+router.get('/imagesByUser/:id', userImageHistory);
+
+//Rota de listagem de imagens curtidas pelo usuário
+router.get('/imagesLikedByUser/:id', userLikedImages);
 
 //Rota de atualizar usuário
 // router.patch('/user/:id', updateUser);
