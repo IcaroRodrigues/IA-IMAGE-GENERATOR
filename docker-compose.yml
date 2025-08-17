@@ -19,10 +19,10 @@ services:
     # Pass environment variables to the application
     # This is how you'll pass database credentials securely
     environment:
-      - DB_HOST: mysql
-      - DB_USER: mysql_user
-      - DB_PASSWORD: USER_MYSQL_P@ssw0rd
-      - DB_NAME: image_gen_database
+      - DB_HOST=mysql
+      - DB_USER=mysql_user
+      - DB_PASSWORD=USER_MYSQL_P@ssw0rd
+      - DB_NAME=image_gen_database
     # Connect this service to the same network as the database
     networks:
       - app-network
