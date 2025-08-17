@@ -20,7 +20,7 @@ export const read = async (req: Request, res: Response) => {
   }
 };
 
-export const readByUser = async (req: Request, res: Response) => {
+export const userImageHistory = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
@@ -43,6 +43,27 @@ export const readByUser = async (req: Request, res: Response) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Erro ao buscar imagens do usuário' });
+  }
+};
+
+export const userLikedImages = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const hasUser = await userRepository.findById(id);
+
+    if (!hasUser) {
+      return res.status(404).json({ message: 'Usuário nao encontrado' });
+    }
+
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = parseInt(req.query.limit as string) || 10;
+
+    const userLikedImages = await imageRepository.findLikedByUserId(id, page, limit);
+
+    res.json(userLikedImages);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao buscar imagens curtidas pelo usuário' });
   }
 };
 

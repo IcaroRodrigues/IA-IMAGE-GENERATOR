@@ -83,6 +83,44 @@ export class ImageRepository {
     };
   }
 
+  async findLikedByUserId(
+    userId: string,
+    page: number = 1,
+    limit: number = 10,
+  ): Promise<{
+    images: Image[];
+    total: number;
+    page: number;
+    totalPages: number;
+    hasNext: boolean;
+    hasPrev: boolean;
+  }> {
+    const [images, total] = await this.repository.findAndCount({
+      where: { likedBy: { id: userId } },
+      relations: ['creator', 'likedBy'],
+      select: {
+        creator: { id: true, username: true },
+        likedBy: { id: true, username: true },
+      },
+      order: {
+        createdAt: 'DESC',
+      },
+      take: limit,
+      skip: (page - 1) * limit,
+    });
+
+    const totalPages = Math.ceil(total / limit);
+
+    return {
+      images,
+      total,
+      page,
+      totalPages,
+      hasNext: page < totalPages,
+      hasPrev: page > 1,
+    };
+  }
+
   async findById(id: string): Promise<Image | null> {
     return await this.repository.findOne({ where: { id } });
   }
