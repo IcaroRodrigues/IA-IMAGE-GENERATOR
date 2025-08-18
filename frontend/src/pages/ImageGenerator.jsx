@@ -6,7 +6,10 @@ export const ImageGenerator = () => {
 
   return (
     <div>
-      <Modal isOpen={openModal} onClose={() => setOpenModal(false)} />
+      <Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
+        teste
+      </Modal>
+
       <h1 className="text-3xl text-white">ImageGenerator</h1>
     </div>
   );
