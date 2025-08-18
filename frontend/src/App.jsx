@@ -4,7 +4,7 @@ import Sidebar from './components/Sidebar';
 
 function App() {
   return (
-    <div className="flex min-h-screen bg-blue">
+    <div className="flex  bg-blue">
       <Sidebar />
       <div className="w-screen flex justify-center py-8 px-[72px]">
         <div className="w-full max-w-[1062px]">
