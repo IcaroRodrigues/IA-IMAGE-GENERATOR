@@ -4,12 +4,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 
 import App from './App.jsx';
-import ImageGenerator from './pages/ImageGenerator.jsx';
-import Feed from './pages/Feed.jsx';
-import History from './pages/History.jsx';
-import MyColection from './pages/MyColection.jsx';
-import Login from './pages/Login.jsx';
-import Register from './pages/Register.jsx';
+import { ImageGenerator } from './pages/ImageGenerator.jsx';
+import { Feed } from './pages/Feed.jsx';
+import { History } from './pages/History.jsx';
+import { MyColection } from './pages/MyColection.jsx';
+import { Login } from './pages/Login.jsx';
+import { Register } from './pages/Register.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

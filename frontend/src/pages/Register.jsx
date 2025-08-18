@@ -1,9 +1,7 @@
-function Register() {
+export const Register = () => {
   return (
     <div>
-      <h1>Register</h1>
+      <h1 className="text-3xl text-white">Register</h1>
     </div>
   );
-}
-
-export default Register;
+};

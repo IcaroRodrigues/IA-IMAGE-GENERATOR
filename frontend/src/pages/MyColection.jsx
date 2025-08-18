@@ -1,9 +1,7 @@
-function MyColection() {
+export const MyColection = () => {
   return (
     <div>
-      <h1>MyColection</h1>
+      <h1 className="text-3xl text-white">MyColection</h1>
     </div>
   );
-}
-
-export default MyColection;
+};
