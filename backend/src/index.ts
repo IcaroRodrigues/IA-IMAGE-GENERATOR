@@ -7,7 +7,7 @@ import path from 'path';
 import { AppDataSource } from './data-source';
 import user from './routes/user';
 import image from './routes/image';
-import login from './routes/authenticate';
+import login from './routes/login';
 import swagger from './config/swagger';
 
 const app = express();
@@ -22,9 +22,11 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 // Rota da documentação Swagger
 app.use('/api-docs', swagger);
 
+// Rotas de autenticação
+app.use('/', login);
+
 app.use('/', user);
 app.use('/', image);
-app.use('/login', login);
 
 AppDataSource.initialize()
   .then(() => {
