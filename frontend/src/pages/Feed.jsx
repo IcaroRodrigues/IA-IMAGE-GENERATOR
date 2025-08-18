@@ -1,9 +1,7 @@
-function Feed() {
+export const Feed = () => {
   return (
     <div>
-      <h1>Feed</h1>
+      <h1 className="text-3xl text-white">Feed</h1>
     </div>
   );
-}
-
-export default Feed;
+};

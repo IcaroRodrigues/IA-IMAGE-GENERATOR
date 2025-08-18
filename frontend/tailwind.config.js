@@ -1,26 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        blue: "#121826",
-        purple: "#7C71FF",
-        gray:{
-          100:"#394150",
-          600:"#212936",
-        }
-
-
+        blue: '#121826',
+        purple: '#7C71FF',
+        gray: {
+          100: '#394150',
+          600: '#212936',
+        },
       },
-      fontFamily:{
+      fontFamily: {
         sans: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       },
     },
   },
   plugins: [],
-}
-
+};

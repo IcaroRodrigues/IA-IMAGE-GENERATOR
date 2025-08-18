@@ -1,9 +1,13 @@
-function ImageGenerator() {
+import { useState } from 'react';
+import { Modal } from '../components/Modal';
+
+export const ImageGenerator = () => {
+  const [openModal, setOpenModal] = useState(true);
+
   return (
     <div>
-      <h1>ImageGenerator</h1>
+      <Modal isOpen={openModal} onClose={() => setOpenModal(false)} />
+      <h1 className="text-3xl text-white">ImageGenerator</h1>
     </div>
   );
-}
-
-export default ImageGenerator;
+};
