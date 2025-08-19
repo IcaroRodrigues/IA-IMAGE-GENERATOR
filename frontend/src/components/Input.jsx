@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import searchicon from '../assets/searchicon.svg';
 
-function Input({ variant = '', label = '', placeholder = '', onSearch = () => {} }) {
-  const [value, setValue] = useState('');
-  const [error, setError] = useState('');
-
+function Input({
+  value = '',
+  error = '',
+  setValue = () => {},
+  iconsearch = false,
+  variant = '',
+  label = '',
+  placeholder = '',
+  icon = null,
+  onSearch = () => {},
+  ...props
+}) {
   const baseStyles = 'w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 transition';
 
   const variants = {
@@ -40,9 +48,10 @@ function Input({ variant = '', label = '', placeholder = '', onSearch = () => {}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           className={`${baseStyles} ${variants[variant]} pr-10`}
+          {...props}
         />
 
-        {variant === 'primary' && (
+        {iconsearch === true && (
           <img
             src={searchicon}
             alt="Search"
