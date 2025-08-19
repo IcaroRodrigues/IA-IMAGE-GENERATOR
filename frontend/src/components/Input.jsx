@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import searchicon from '../assets/searchicon.svg';
 
-function Input({ variant = '', label = '', placeholder = '', onSearch = () => {} }) {
+function Input({
+  variant = '',
+  label = '',
+  placeholder = '',
+  onSearch = () => {},
+  searchIcon = false,
+}) {
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
 
@@ -42,7 +48,7 @@ function Input({ variant = '', label = '', placeholder = '', onSearch = () => {}
           className={`${baseStyles} ${variants[variant]} pr-10`}
         />
 
-        {variant === 'primary' && (
+        {searchIcon === true && (
           <img
             src={searchicon}
             alt="Search"
