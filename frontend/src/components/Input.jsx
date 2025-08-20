@@ -6,10 +6,10 @@ function Input({
   error = '',
   setValue = () => {},
   iconsearch = false,
+  iconStart = null,
   variant = '',
   label = '',
   placeholder = '',
-  icon = null,
   onSearch = () => {},
   ...props
 }) {
@@ -41,17 +41,21 @@ function Input({
     <div className="w-full">
       {label && <p className="text-gray-300">{label}</p>}
 
-      <div className="relative mt-[12px]">
+      <div className="relative mt-[12px] flex items-center">
+        {iconStart && <span className="absolute left-3 text-gray-400 text-lg">{iconStart}</span>}
+
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
-          className={`${baseStyles} ${variants[variant]} pr-10`}
+          className={`${baseStyles} ${variants[variant]} ${iconStart ? 'pl-10' : ''} ${
+            iconsearch ? 'pr-10' : ''
+          }`}
           {...props}
         />
 
-        {iconsearch === true && (
+        {iconsearch && (
           <img
             src={searchicon}
             alt="Search"

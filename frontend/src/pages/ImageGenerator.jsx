@@ -20,8 +20,6 @@ export const ImageGenerator = () => {
       <Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
         teste
       </Modal>
-      <Input variant="primary" label="teste" placeholder="search images" />
-      <Input variant="secondary" label="teste" placeholder="search images" />
 
       <h1 className="text-3xl text-white">ImageGenerator</h1>
     </div>

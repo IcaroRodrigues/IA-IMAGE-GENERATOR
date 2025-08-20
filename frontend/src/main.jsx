@@ -11,6 +11,8 @@ import { MyColection } from './pages/MyColection.jsx';
 import { Login } from './pages/Login.jsx';
 import { Register } from './pages/Register.jsx';
 
+import 'line-awesome/dist/line-awesome/css/line-awesome.min.css';
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>

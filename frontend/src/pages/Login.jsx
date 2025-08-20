@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import Input from '../components/Input';
 import { useState, useEffect } from 'react';
+import Button from '../components/Button';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -40,13 +41,38 @@ export const Login = () => {
   if (loading) return null;
 
   return (
-    <div>
-      <h1 className="text-3xl text-white mb-4">Login</h1>
-      <Link to="/register" className="text-3xl text-white">
-        Register
-      </Link>
+    <div className="flex flex-col items-center justify-center h-full ">
+      <div className=" w-[300px] rounded-lg flex flex-col items-center ">
+        <div className=" w-[300px] flex flex-col ">
+          <Input
+            variant="primary"
+            placeholder="Digite seu email"
+            value={email}
+            setValue={setEmail}
+            iconStart={<i className="las la-envelope"></i>}
+          />
+          <Input
+            variant="primary"
+            placeholder="Digite sua senha"
+            value={password}
+            setValue={setPassword}
+            type="password"
+            iconStart={<i class="las la-lock"></i>}
+          />
 
-      <button onClick={autenticateUser}>Login</button>
+          <Button className="mt-[24px]" onClick={autenticateUser}>
+            LOGIN
+          </Button>
+        </div>
+
+        <div className="w-full flex items-center justify-end mt-2">
+          <Link to="/register" className=" text-white ">
+            Cadastre-se
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
+
+export default Login;

@@ -12,6 +12,7 @@ export default {
           300: '#6C727F',
           600: '#212936',
         },
+        fontColor: '#FFF',
       },
       fontFamily: {
         sans: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
