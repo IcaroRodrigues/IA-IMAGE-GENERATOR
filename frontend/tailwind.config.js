@@ -15,7 +15,7 @@ export default {
         fontColor: '#FFF',
       },
       fontFamily: {
-        sans: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+        sans: ['Montserrat', 'sans-serif'],
       },
     },
   },
