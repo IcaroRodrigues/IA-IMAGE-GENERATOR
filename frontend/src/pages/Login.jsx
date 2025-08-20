@@ -43,26 +43,26 @@ export const Login = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full ">
       <div className=" w-[300px] rounded-lg flex flex-col items-center ">
-        <div className=" w-[300px] flex flex-col ">
-          <Input
-            variant="primary"
-            placeholder="Digite seu email"
-            value={email}
-            setValue={setEmail}
-            iconStart={<i className="las la-envelope"></i>}
-          />
-          <Input
-            variant="primary"
-            placeholder="Digite sua senha"
-            value={password}
-            setValue={setPassword}
-            type="password"
-            iconStart={<i class="las la-lock"></i>}
-          />
+        <div className=" w-[300px] flex flex-col">
+          <div className="flex flex-col gap-4 mb-6">
+            <Input
+              variant="primary"
+              placeholder="Digite seu email"
+              value={email}
+              setValue={setEmail}
+              iconStart={<i className="las la-envelope text-xl"></i>}
+            />
+            <Input
+              variant="primary"
+              placeholder="Digite sua senha"
+              value={password}
+              setValue={setPassword}
+              type="password"
+              iconStart={<i class="las la-lock text-xl"></i>}
+            />
+          </div>
 
-          <Button className="mt-[24px]" onClick={autenticateUser}>
-            LOGIN
-          </Button>
+          <Button onClick={autenticateUser}>LOGIN</Button>
         </div>
 
         <div className="w-full flex items-center justify-end mt-2">

@@ -13,13 +13,14 @@ function Input({
   onSearch = () => {},
   ...props
 }) {
+  const [isFocused, setIsFocused] = useState(false);
   const baseStyles = 'w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 transition';
 
   const variants = {
     primary:
-      'bg-gray-900 border border-gray-600 text-white placeholder-gray-400 focus:border-purple-500',
+      'bg-gray-900 border border-gray-600 text-white placeholder-gray-400 focus:border-gray-50 shadow-none focus:ring-0 h-full',
     secondary:
-      'bg-gray-600 border border-gray-200 text-white focus:ring-blue-500 focus:border-purple-500',
+      'bg-gray-600 border border-gray-200 text-white placeholder-gray-300 focus:border-gray-50 shadow-none focus:ring-0 h-full',
   };
 
   const handleSearch = () => {
@@ -41,13 +42,23 @@ function Input({
     <div className="w-full">
       {label && <p className="text-gray-300">{label}</p>}
 
-      <div className="relative mt-[12px] flex items-center">
-        {iconStart && <span className="absolute left-3 text-gray-400 text-lg">{iconStart}</span>}
+      <div className="relative flex items-center h-[45px]">
+        {iconStart && (
+          <span 
+            className={`absolute left-3 text-lg transition-colors ${
+              isFocused ? 'text-gray-50' : 'text-gray-400'
+            }`}
+          >
+            {iconStart}
+          </span>
+        )}
 
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           placeholder={placeholder}
           className={`${baseStyles} ${variants[variant]} ${iconStart ? 'pl-10' : ''} ${
             iconsearch ? 'pr-10' : ''
