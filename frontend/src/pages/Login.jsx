@@ -8,6 +8,7 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [errors, setErrors] = useState({ email: '', password: '' });
 
   useEffect(() => {
     const token = localStorage.getItem('token');
