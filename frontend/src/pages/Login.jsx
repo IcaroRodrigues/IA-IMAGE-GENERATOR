@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Formik, Form, useFormik } from 'formik';
-import Input from '../components/Input';
+import { useFormik } from 'formik';
+import { motion } from 'framer-motion';
+import { Input } from '../components/Input';
 import Button from '../components/Button';
 import { useLogin } from '../hooks/useLogin';
 
@@ -14,8 +15,17 @@ export const Login = () => {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full">
-      <form
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-col items-center justify-center w-full h-full"
+    >
+      <motion.form
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.1 }}
         onSubmit={formik.handleSubmit}
         className="flex flex-col w-[300px] items-center gap-4 mb-6"
       >
@@ -41,8 +51,8 @@ export const Login = () => {
           iconStart={<i className="las la-lock text-xl"></i>}
         />
 
-        <Button className='w-full' type="submit" disabled={formik.isSubmitting}>
-          LOGIN
+        <Button className="w-full" type="submit" disabled={formik.isSubmitting}>
+          ENTRAR
         </Button>
 
         <div className="w-full flex justify-end">
@@ -50,7 +60,7 @@ export const Login = () => {
             Cadastre-se
           </Link>
         </div>
-      </form>
-    </div>
+      </motion.form>
+    </motion.div>
   );
 };

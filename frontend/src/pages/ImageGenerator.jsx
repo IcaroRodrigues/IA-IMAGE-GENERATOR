@@ -1,6 +1,6 @@
 import { useState, useEffect, use } from 'react';
 import { Modal } from '../components/Modal';
-import Input from '../components/Input';
+import { Input } from '../components/Input';
 
 export const ImageGenerator = () => {
   const [openModal, setOpenModal] = useState(false);

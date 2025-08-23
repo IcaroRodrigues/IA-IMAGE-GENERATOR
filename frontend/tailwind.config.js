@@ -40,6 +40,7 @@ export default {
           700: '#4237B5',
         },
         gray: {
+          25: 'f3f4f6',
           50: '#E4E4E7',
           100: '#394150',
           200: '#394150',
@@ -50,6 +51,21 @@ export default {
       },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
+      },
+      // Sistema de Grid similar ao Bootstrap
+      width: {
+        'col-1': '8.333333%',
+        'col-2': '16.666667%',
+        'col-3': '25%',
+        'col-4': '33.333333%',
+        'col-5': '41.666667%',
+        'col-6': '50%',
+        'col-7': '58.333333%',
+        'col-8': '66.666667%',
+        'col-9': '75%',
+        'col-10': '83.333333%',
+        'col-11': '91.666667%',
+        'col-12': '100%',
       },
     },
   },

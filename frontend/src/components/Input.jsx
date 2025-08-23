@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import searchicon from '../assets/searchicon.svg';
 
-function Input({
+export const Input = ({
   value = '',
   error = '',
   setValue = () => {},
@@ -15,7 +15,7 @@ function Input({
   placeholder = '',
   onSearch = () => {},
   ...props
-}) {
+}) => {
   const [isFocused, setIsFocused] = useState(false);
   const baseStyles = 'w-full px-4 py-2 rounded-lg focus:outline-none transition';
 
@@ -96,6 +96,4 @@ function Input({
       )}
     </div>
   );
-}
-
-export default Input;
+};

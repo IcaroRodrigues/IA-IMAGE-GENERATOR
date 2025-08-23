@@ -6,9 +6,9 @@ import { ToastProvider } from './providers/ToastProvider';
 function App() {
   return (
     <ToastProvider>
-      <div className="flex  bg-blue-300">
+      <div className="flex min-h-screen bg-blue-300">
         <Sidebar />
-        <div className="w-screen flex justify-center py-8 px-[72px]">
+        <div className="flex-1 flex justify-center py-8 px-4 md:px-[72px]">
           <div className="w-full max-w-[1062px]">
             <Outlet />
           </div>

@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
-import Input from '../components/Input';
+import { motion } from 'framer-motion';
+import { Input } from '../components/Input';
 import Button from '../components/Button';
 import { useRegister } from '../hooks/useRegister';
 
 export const Register = () => {
   const { initialValues, validationSchema, onSubmit } = useRegister();
-  
+
   const formik = useFormik({
     initialValues,
     validationSchema,
@@ -14,8 +15,20 @@ export const Register = () => {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center h-full">
-      <form onSubmit={formik.handleSubmit} className="flex flex-col items-center w-[300px] gap-4 mb-6">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-col items-center justify-center h-full"
+    >
+      <motion.form
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.1 }}
+        onSubmit={formik.handleSubmit}
+        className="flex flex-col items-center w-[300px] gap-4 mb-6"
+      >
         <Input
           variant="primary"
           placeholder="Digite seu nome"
@@ -68,7 +81,7 @@ export const Register = () => {
             Já tem uma conta? Faça login
           </Link>
         </div>
-      </form>
-    </div>
+      </motion.form>
+    </motion.div>
   );
 };

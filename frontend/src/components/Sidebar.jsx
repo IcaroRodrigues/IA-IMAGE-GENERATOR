@@ -10,7 +10,7 @@ import Loginicon from '../assets/loginicon.svg';
 function Sidebar() {
   const location = useLocation();
   return (
-    <div className="flex flex-col justify-between bg-blue-300 w-[70px] min-h-screen  py-6 px-4 border-r-[1px] border-r-gray-600">
+    <div className="flex flex-col justify-between bg-blue-300 w-[60px] sm:w-[70px] min-h-screen py-6 px-2 sm:px-4 border-r-[1px] border-r-gray-600">
       <div className="flex flex-col items-center">
         <div className="flex justify-center mb-4">
           <img src={logo} alt="Logo" className="w-[22px] h-[22px]" />
