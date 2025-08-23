@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useToast } from '../providers/ToastProvider';
 import { signupSchema } from '../validations/signupSchema';
 import { initialValues } from '../constants/initialValues';
+import { CREATE_USER_URL } from '../constants/urls.js';
 
 export const useRegister = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export const useRegister = () => {
 
   const handleSignupSubmit = async (values, actions) => {
     try {
-      const response = await fetch('http://localhost:3000/register', {
+      const response = await fetch(CREATE_USER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values),
@@ -25,18 +26,14 @@ export const useRegister = () => {
       const result = await response.json();
 
       if (!response.ok) {
-        openToast({
+        return openToast({
           title: result.error || 'Erro ao criar conta',
           type: 'error',
         });
-        if (result.error) {
-          actions.setFieldError('email', result.error);
-        }
-        actions.setSubmitting(false);
-        return;
       }
 
       window.localStorage.setItem('token', result.token);
+
       openToast({
         title: 'Conta criada com sucesso!',
         type: 'success',
@@ -48,8 +45,6 @@ export const useRegister = () => {
         title: 'Erro ao criar conta',
         type: 'error',
       });
-      actions.setFieldError('email', 'Erro ao criar conta');
-      actions.setSubmitting(false);
     }
   };
 

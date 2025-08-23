@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useToast } from '../providers/ToastProvider';
 import { loginSchema } from '../validations/loginSchema';
 import { initialValues } from '../constants/initialValues';
+import { LOGIN_URL } from '../constants/urls';
 
 export const useLogin = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export const useLogin = () => {
 
   const handleLoginSubmit = async (values, actions) => {
     try {
-      const response = await fetch('http://localhost:3000/login', {
+      const response = await fetch(LOGIN_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values),
