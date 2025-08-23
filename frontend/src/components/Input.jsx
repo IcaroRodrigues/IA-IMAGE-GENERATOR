@@ -23,6 +23,8 @@ function Input({
       'bg-gray-600 border border-gray-200 text-white placeholder-gray-300 focus:border-gray-50 shadow-none focus:ring-0 h-full',
   };
 
+  const errorStyle = error ? 'border-red focus:border-red' : '';
+
   const handleSearch = () => {
     if (!value.trim()) {
       setError('Por favor, preencha o campo antes de pesquisar.');
@@ -44,7 +46,7 @@ function Input({
 
       <div className="relative flex items-center h-[45px]">
         {iconStart && (
-          <span 
+          <span
             className={`absolute left-3 text-lg transition-colors ${
               isFocused ? 'text-gray-50' : 'text-gray-400'
             }`}
@@ -56,13 +58,10 @@ function Input({
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
           placeholder={placeholder}
-          className={`${baseStyles} ${variants[variant]} ${iconStart ? 'pl-10' : ''} ${
-            iconsearch ? 'pr-10' : ''
-          }`}
+          className={`${baseStyles} ${variants[variant]} ${errorStyle} ${
+            iconStart ? 'pl-10' : ''
+          } ${iconsearch ? 'pr-10' : ''}`}
           {...props}
         />
 
@@ -76,7 +75,14 @@ function Input({
         )}
       </div>
 
-      {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+      {error && (
+        <p className="text-red text-xs mt-1">
+          <span className="">
+            <i class="las la-times-circle"></i>
+          </span>{' '}
+          {error}
+        </p>
+      )}
     </div>
   );
 }
