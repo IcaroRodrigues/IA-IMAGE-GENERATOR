@@ -15,3 +15,27 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+
+@layer utilities {
+  .range-slider {
+    @apply appearance-none w-full h-2 rounded-lg bg-[#212936] cursor-pointer;
+  }
+
+  .range-slider::-webkit-slider-thumb {
+    @apply appearance-none w-4 h-4 rounded-full bg-[#7C71FF] cursor-pointer;
+    margin-top: -4px; /* centraliza na barra */
+  }
+
+  .range-slider::-moz-range-thumb {
+    @apply w-4 h-4 rounded-full bg-[#7C71FF] cursor-pointer border-0;
+  }
+
+  .range-slider::-webkit-slider-runnable-track {
+    @apply rounded-lg bg-[#212936] h-2;
+  }
+
+  .range-slider::-moz-range-track {
+    @apply rounded-lg bg-[#212936] h-2;
+  }
+}

@@ -45,7 +45,7 @@ export const Input = ({
 
   return (
     <div className="w-full">
-      {label && <p className="text-gray-300">{label}</p>}
+      {label && <p className="text-gray-300 mb-3 font-semibold">{label}</p>}
 
       <div className="relative flex items-center h-[45px]">
         {iconStart && (

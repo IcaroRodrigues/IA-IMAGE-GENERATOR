@@ -1,8 +1,10 @@
-function Button({ children, onClick, className = '' }) {
+function Button({ onClick, className = '', active = false, children }) {
   return (
     <button
       onClick={onClick}
-      className={`flex items-center justify-center bg-purple-300 hover:opacity-90 hover:transition-opacity text-white font-semibold py-2 px-4 rounded-md ${className}`}
+      className={`w-full flex items-center justify-center ${
+        active ? 'bg-purple-300' : 'bg-gray-600'
+      } hover:opacity-90 hover:transition-opacity text-white font-semibold py-2 px-4 rounded-md ${className}`}
     >
       {children}
     </button>

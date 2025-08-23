@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 
 import logo from '../assets/logo.svg';
-import imageGenerator from '../assets/imagegeneratoricon.svg';
+import { GenerateIconSVG } from '../assets/imagegeneratoricon.jsx';
 import feedicon from '../assets/feedicon.svg';
 import historyicon from '../assets/historyicon.svg';
 import mycollectionicon from '../assets/mycolectionicon.svg';
@@ -24,7 +24,7 @@ function Sidebar() {
                 location.pathname === '/' ? 'bg-purple-300' : 'hover:bg-purple-300'
               }`}
             >
-              <img src={imageGenerator} alt="Image generator" className="w-[24px] h-[24px]" />
+              <GenerateIconSVG />
             </div>
           </Link>
           <Link to="/feed">

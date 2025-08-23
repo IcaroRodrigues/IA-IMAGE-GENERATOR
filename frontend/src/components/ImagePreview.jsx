@@ -1,7 +1,7 @@
 export const ImagePreview = ({ generateImage, generateAvatar, username, imageId }) => {
   return (
     <div className="break-inside-avoid mb-6 rounded-lg overflow-hidden">
-      <div className="border-4 border-gray-600">
+      <div className="border-4 border-gray-600 rounded-lg">
         <img src={generateImage(imageId)} alt="Generated Image" className="w-full object-cover" />
       </div>
 
