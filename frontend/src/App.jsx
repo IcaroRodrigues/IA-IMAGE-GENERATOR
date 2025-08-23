@@ -1,17 +1,20 @@
 import './App.css';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import { ToastProvider } from './providers/ToastProvider';
 
 function App() {
   return (
-    <div className="flex  bg-blue">
-      <Sidebar />
-      <div className="w-screen flex justify-center py-8 px-[72px]">
-        <div className="w-full max-w-[1062px]">
-          <Outlet />
+    <ToastProvider>
+      <div className="flex  bg-blue-300">
+        <Sidebar />
+        <div className="w-screen flex justify-center py-8 px-[72px]">
+          <div className="w-full max-w-[1062px]">
+            <Outlet />
+          </div>
         </div>
       </div>
-    </div>
+    </ToastProvider>
   );
 }
 

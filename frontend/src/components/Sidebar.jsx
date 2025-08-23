@@ -10,10 +10,8 @@ import Loginicon from '../assets/loginicon.svg';
 function Sidebar() {
   const location = useLocation();
   return (
-    <div className="flex flex-col justify-between bg-gray-900 w-[70px] min-h-screen  py-6 px-4 border-r-[1px] border-r-gray-600">
-      {/* Top Section: Logo + Icons */}
+    <div className="flex flex-col justify-between bg-blue-300 w-[70px] min-h-screen  py-6 px-4 border-r-[1px] border-r-gray-600">
       <div className="flex flex-col items-center">
-        {/* Logo */}
         <div className="flex justify-center mb-4">
           <img src={logo} alt="Logo" className="w-[22px] h-[22px]" />
         </div>
@@ -23,7 +21,7 @@ function Sidebar() {
           <Link to="/">
             <div
               className={`w-[40px] h-[40px] flex items-center justify-center rounded-[8px] transition-colors ${
-                location.pathname === '/' ? 'bg-purple' : 'hover:bg-purple'
+                location.pathname === '/' ? 'bg-purple-300' : 'hover:bg-purple-300'
               }`}
             >
               <img src={imageGenerator} alt="Image generator" className="w-[24px] h-[24px]" />
@@ -32,7 +30,7 @@ function Sidebar() {
           <Link to="/feed">
             <div
               className={`w-[40px] h-[40px] flex items-center justify-center rounded-[8px] transition-colors ${
-                location.pathname === '/feed' ? 'bg-purple' : 'hover:bg-purple'
+                location.pathname === '/feed' ? 'bg-purple-300' : 'hover:bg-purple-300'
               }`}
             >
               <img src={feedicon} alt="Feed" className="w-[24px] h-[24px]" />
@@ -41,7 +39,7 @@ function Sidebar() {
           <Link to="/history">
             <div
               className={`w-[40px] h-[40px] flex items-center justify-center rounded-[8px] transition-colors ${
-                location.pathname === '/history' ? 'bg-purple' : 'hover:bg-purple'
+                location.pathname === '/history' ? 'bg-purple-300' : 'hover:bg-purple-300'
               }`}
             >
               <img src={historyicon} alt="History" className="w-[24px] h-[24px]" />
@@ -50,7 +48,7 @@ function Sidebar() {
           <Link to="/my-colection">
             <div
               className={`w-[40px] h-[40px] flex items-center justify-center rounded-[8px] transition-colors ${
-                location.pathname === '/my-colection' ? 'bg-purple' : 'hover:bg-purple'
+                location.pathname === '/my-colection' ? 'bg-purple-300' : 'hover:bg-purple-300'
               }`}
             >
               <img src={mycollectionicon} alt="My Collection" className="w-[24px] h-[24px]" />
