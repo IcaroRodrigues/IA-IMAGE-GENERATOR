@@ -4,6 +4,7 @@ import { createAvatar } from '@dicebear/core';
 import { initials } from '@dicebear/collection';
 import { ImagePreview } from '../components/ImagePreview';
 import { mockUsers } from '../data/mockUsers';
+import Bookmark from '../assets/bookmark';
 
 export const Feed = () => {
   const [imageKeyWord, setImageKeyWord] = useState('');
@@ -26,22 +27,23 @@ export const Feed = () => {
     const minHeight = 120;
     const maxHeight = 500;
     const seed = id * 17 + 123;
-    const randomHeight = minHeight + ((seed * 9301 + 49297) % 233280) / 233280 * (maxHeight - minHeight);
+    const randomHeight =
+      minHeight + (((seed * 9301 + 49297) % 233280) / 233280) * (maxHeight - minHeight);
     const height = Math.floor(randomHeight);
     return `https://picsum.photos/id/${id}/${width}/${height}`;
   };
 
   const loadMoreUsers = () => {
     if (!hasMore) return;
-    
+
     const startIndex = currentPage * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const newUsers = mockUsers.slice(startIndex, endIndex);
-    
+
     if (newUsers.length > 0) {
-      setDisplayedUsers(prev => [...prev, ...newUsers]);
-      setCurrentPage(prev => prev + 1);
-      
+      setDisplayedUsers((prev) => [...prev, ...newUsers]);
+      setCurrentPage((prev) => prev + 1);
+
       if (endIndex >= mockUsers.length) {
         setHasMore(false);
       }
@@ -57,7 +59,7 @@ export const Feed = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (loading || !hasMore) return;
-      
+
       const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
       if (scrollTop + clientHeight >= scrollHeight - 5) {
         setLoading(true);
@@ -96,7 +98,7 @@ export const Feed = () => {
           />
         ))}
       </div>
-      
+
       {loading && (
         <div className="flex justify-center py-4">
           <div className="text-white">Carregando mais imagens...</div>
