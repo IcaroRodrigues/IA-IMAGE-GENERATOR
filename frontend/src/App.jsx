@@ -8,7 +8,7 @@ function App() {
     <ToastProvider>
       <div className="flex min-h-screen bg-blue-300">
         <Sidebar />
-        <div className="flex-1 flex justify-center py-8 px-4 md:px-[72px]">
+        <div className="flex-1 flex justify-center py-10 px-4 md:px-[72px]">
           <div className="w-full max-w-[1062px]">
             <Outlet />
           </div>

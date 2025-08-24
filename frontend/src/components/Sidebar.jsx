@@ -12,9 +12,9 @@ function Sidebar() {
   return (
     <div className="flex flex-col justify-between bg-blue-300 w-[60px] sm:w-[70px] min-h-screen py-6 px-2 sm:px-4 border-r-[1px] border-r-gray-600">
       <div className="flex flex-col items-center">
-        <div className="flex justify-center mb-4">
+        <Link to="/feed" className="flex justify-center mb-4">
           <img src={logo} alt="Logo" className="w-[22px] h-[22px]" />
-        </div>
+        </Link>
 
         {/* Icons */}
         <div className="flex flex-col items-center  gap-4 mt-[53px]">
@@ -36,19 +36,19 @@ function Sidebar() {
               <img src={feedicon} alt="Feed" className="w-[24px] h-[24px]" />
             </div>
           </Link>
-          <Link to="/history">
+          <Link to="/historico">
             <div
               className={`w-[40px] h-[40px] flex items-center justify-center rounded-[8px] transition-colors ${
-                location.pathname === '/history' ? 'bg-purple-300' : 'hover:bg-purple-300'
+                location.pathname === '/historico' ? 'bg-purple-300' : 'hover:bg-purple-300'
               }`}
             >
               <img src={historyicon} alt="History" className="w-[24px] h-[24px]" />
             </div>
           </Link>
-          <Link to="/my-colection">
+          <Link to="/minha-coleção">
             <div
               className={`w-[40px] h-[40px] flex items-center justify-center rounded-[8px] transition-colors ${
-                location.pathname === '/my-colection' ? 'bg-purple-300' : 'hover:bg-purple-300'
+                location.pathname === '/minha-coleção' ? 'bg-purple-300' : 'hover:bg-purple-300'
               }`}
             >
               <img src={mycollectionicon} alt="My Collection" className="w-[24px] h-[24px]" />

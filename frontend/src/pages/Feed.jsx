@@ -73,7 +73,7 @@ export const Feed = () => {
   }, [currentPage, loading, hasMore]);
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-8">
       <div className="w-col-6">
         <Input
           value={imageKeyWord}

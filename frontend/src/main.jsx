@@ -19,15 +19,13 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        {/* Layout com Navbar */}
         <Route path="/" element={<App />}>
-          {/* rotas filhas */}
           <Route index element={<ImageGenerator />} />
           <Route path="feed" element={<Feed />} />
-          <Route path="history" element={<History />} />
-          <Route path="my-colection" element={<MyColection />} />
+          <Route path="historico" element={<History />} />
+          <Route path="minha-coleção" element={<MyColection />} />
           <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
+          <Route path="cadastro" element={<Register />} />
         </Route>
       </Routes>
     </BrowserRouter>

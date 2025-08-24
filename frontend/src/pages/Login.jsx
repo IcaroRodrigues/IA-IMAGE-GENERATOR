@@ -56,7 +56,7 @@ export const Login = () => {
         </Button>
 
         <div className="w-full flex justify-end">
-          <Link to="/register" className="text-white">
+          <Link to="/cadastro" className="text-white">
             Cadastre-se
           </Link>
         </div>

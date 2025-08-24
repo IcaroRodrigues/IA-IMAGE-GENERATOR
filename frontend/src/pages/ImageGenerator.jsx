@@ -24,7 +24,7 @@ export const ImageGenerator = () => {
   const [openColorPicker, setOpenColorPicker] = useState(false);
 
   return (
-    <div className="grid grid-cols-2 gap-8 mt-5">
+    <div className="grid grid-cols-2 gap-8">
       <div className="flex flex-col gap-8">
         <Input label="Prompt" variant="secondary" />
         <Input label="Negative Prompt (Optional)" variant="secondary" />

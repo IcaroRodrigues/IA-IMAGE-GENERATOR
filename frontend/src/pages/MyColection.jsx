@@ -85,9 +85,9 @@ export const MyColection = () => {
   }, [currentPage, loading, hasMore]);
 
   return (
-    <div className="flex flex-col gap-10">
-      <h1 className='text-xl text-gray-50 font-semibold'>Minha coleção</h1>
-      
+    <div className="flex flex-col gap-8">
+      <h1 className="text-xl text-gray-50 font-semibold">Minha coleção</h1>
+
       <div className="columns-1 sm:columns-2 md:columns-3 xl:columns-4 gap-6 space-y-6">
         {displayedUsers.map((user) => (
           <ImagePreview
