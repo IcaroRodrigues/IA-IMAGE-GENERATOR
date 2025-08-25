@@ -117,13 +117,17 @@ export const History = () => {
     <div className="flex flex-col gap-8">
       <div className="text-xl font-semibold">Histórico</div>
 
-      <div className=" flex flex-col gap-8 ">
+      <div className="flex flex-col gap-8">
         {displayedImages.map((imageId) => (
-          <div key={imageId} className="flex md:flex-row flex-col gap-8 ">
+          <div
+            key={imageId}
+            className="flex flex-col md:flex-row gap-8 border-b border-gray-600 last:border-b-0 pb-6"
+          >
             {/* imagem */}
             <ImagePreview generateImage={generateImage} imageId={imageId} />
+
             {/* informações */}
-            <div className="grid grid-cols-1 md:grid-cols-2  gap-x-12 gap-y-4 w-[640px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 w-[640px]">
               <ImageDescription
                 imageLabel={'prompt'}
                 imagePrompt={
@@ -150,6 +154,7 @@ export const History = () => {
           </div>
         ))}
       </div>
+
       {loading && (
         <div className="flex justify-center py-4">
           <div className="text-white">Carregando mais imagens...</div>
