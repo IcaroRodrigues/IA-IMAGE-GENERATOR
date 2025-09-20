@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { createUser, deleteUser, readUsers, updateUser } from '../../controllers/userController';
+import { authMiddleware } from '../../middleware/auth';
 
 const router = Router();
 
@@ -7,7 +8,7 @@ const router = Router();
 router.post('/user', createUser);
 
 //Rota que listar os usuários
-router.get('/users', readUsers);
+router.get('/users', authMiddleware, readUsers);
 
 //Rota de atualizar usuário
 router.patch('/user/:id', updateUser);
