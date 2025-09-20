@@ -8,6 +8,7 @@ import {
 } from '../../controllers/imageController';
 
 import upload from '../../middleware/upload';
+import { authMiddleware } from '../../middleware/auth';
 
 const router = Router();
 
@@ -18,7 +19,7 @@ router.post('/image', upload.single('image'), create);
 router.get('/images', read);
 
 //Rota de listagem de imagens do usuário
-router.get('/imagesByUser/:id', userImageHistory);
+router.get('/imagesByUser', authMiddleware, userImageHistory);
 
 //Rota de listagem de imagens curtidas pelo usuário
 router.get('/imagesLikedByUser/:id', userLikedImages);
