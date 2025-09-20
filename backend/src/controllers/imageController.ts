@@ -20,24 +20,24 @@ export const read = async (req: Request, res: Response) => {
   }
 };
 
-export const userImageHistory = async (req: Request, res: Response) => {
+export const userImageHistory = async (req: any, res: Response) => {
   try {
-    const { id } = req.params;
+    const { userId } = req;
 
-    const hasUser = await userRepository.findById(id);
+    const hasUser = await userRepository.findById(userId);
 
     if (!hasUser) {
       return res.status(404).json({ message: 'Usuário nao encontrado' });
     }
 
-    if (!id) {
+    if (!userId) {
       return res.status(400).json({ message: 'Usuário precisa estar logado' });
     }
 
     const page = parseInt(req.query.page as string) || 1;
     const limit = parseInt(req.query.limit as string) || 10;
 
-    const result = await imageRepository.findByUserId(id, page, limit);
+    const result = await imageRepository.findByUserId(userId, page, limit);
 
     res.json(result);
   } catch (error) {
