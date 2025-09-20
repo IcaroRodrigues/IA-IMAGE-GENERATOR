@@ -47,7 +47,7 @@ export const createUser = async (req: Request, res: Response) => {
   }
 };
 
-export const readUsers = async (req: Request, res: Response) => {
+export const readUsers = async (req: any, res: Response) => {
   try {
     const users = await userRepository.findAll();
     res.json(users);
